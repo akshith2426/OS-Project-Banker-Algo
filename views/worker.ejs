@@ -1,0 +1,78 @@
+<%- include ('./partials/layout.ejs'); -%>
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h1 class="text-center mb-3">Welcome To Worker's Page</h1>
+            <br>
+                <form method="POST" action="/Worker">
+                    <div class="form-group">
+                        <legend for="name">Enter Your Name </legend>
+                            <select id="name" name="worker_name" class="form-control" required>
+                                <%workerlist.forEach(function(param){%>
+                                <option value="<%=param%>"><%=param%></option>
+                                <%})%>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <legend for="resource">Choose Your Profession </legend>
+                        <select name="resource" id="resource" class="form-control" required>
+                            <option value="Plumber">Plumber</option>
+                            <option value="Garbage Collector">Garbage Collector</option>
+                            <option value="Carpenter">Carpenter</option>
+                            <option value="Painter">Painter</option>
+                            <option value="Cleaner">Cleaner</option>
+                            <option value="Electrician">Electrician</option>
+                            <option value="Barber">Barber</option>
+                            <option value="Pest Controller">Pest Controller</option>
+                        </select>
+                    </div>
+                    <div class="form-group"> 
+                        <legend for="location" >Current Location </legend>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="latitude">Current Latitude</label>
+                                <input type="text" id="latitude" name="latitude" class="form-control" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="longitude">Current Longitude</label>
+                                <input type="text" id="longitude" name="longitude" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <legend for="attendancerequirement" class="form-label">Mark The Attendance</legend>
+                        <div class="row">
+                            <div class="col-sm-5"> 
+                                <div class="form-check">
+                                    <input type="radio" name="attendance" value="available" id="available" class="form-check-input">
+                                    <label for="available" class="form-check-label">Available </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-check">
+                                    <input type="radio" name="attendance" value="not available" id="not available" class="form-check-input">
+                                    <label for="not available" class="form-check-label">Not Available </label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var longi = document.getElementById('longitude');
+    var lati = document.getElementById('latitude')
+    navigator.geolocation.getCurrentPosition(function (position) {
+        longi.value = position.coords.longitude.toFixed(5);
+        lati.value = position.coords.latitude.toFixed(5);
+    })
+</script>
+
+
+<%- include ('./partials/footer.ejs'); -%>
+
+

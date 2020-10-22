@@ -1,0 +1,258 @@
+<%- include ('./partials/layout.ejs'); -%>
+<h1>Welcome <%= user.name %></h1>
+<br> 
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h2 class="text-center mb-3">Requirement</h2>
+            <form action="/ServicedToday/Edit/<%=user._id%>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <legend for="todayrequirement">Do You Want The Service Today</legend>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-check">
+                                <input type="radio" name="servicedToday" value=false id="servicedToday1" class="form-check-input">
+                                <label for="servicedToday1">Yes</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-check">
+                                <input type="radio" name="servicedToday" value=true id="servicedToday2" class="form-check-input">
+                                <label for="servicedToday2">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h2 class="text-center mb-3">Details</h2>
+            <div class="form-group">
+                <legend class="form-label">Your Email</legend>
+                    <input type="email" id="email" name="email" class="form-control" value="<%=user.email%>" disabled>
+            </div>
+            <div class="form-group">
+                <legend for="contact_no">Contact Number</legend>
+                    <input type="number" id="contact_no" name="contact_no" class="form-control" placeholder="Enter Contact Number"  value="<%= user.contact_no%>"  disabled/>
+            </div>
+            <div class="form-group">
+                <legend class="form-label">What Are You</legend>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <%if(user.identity=="Individual"){%>
+                            <input type="radio" name="user[identity]" value="Individual" id="individual" class="form-check-input" checked disabled>
+                            <label for="individual" class="form-check-label" >An Individual </label>
+                            <%}else{%>
+                            <input type="radio" name="user[identity]" value="Individual" id="individual" class="form-check-input" disabled>
+                            <label for="individual" class="form-check-label">An Individual </label>
+                            <%}%>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <%if(user.identity=="Community"){%>
+                            <input type="radio" name="user[identity]" value="Community" id="community" class="form-check-input" checked disabled>
+                            <label for="community" class="form-check-label"> A Community </label>
+                            <%}else{%>
+                            <input type="radio" name="user[identity]" value="Community" id="community" class="form-check-input" disabled>
+                            <label for="community" class="form-check-label"> A Community </label>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <legend for="location" class="form-label"> Your Location</legend>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" id="latitude" name="latitude" class="form-control" disabled value="<%=user.latitude%>">
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" id="longitude" name="longitude" class="form-control" disabled value="<%=user.longitude%>">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <legend for="services" class="form-label">Your Choosen Services</legend>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <%if(user.Service1=="Plumbing"){%>
+                            <input type="checkbox" name="Service1" value="Plumbing" id="Service1" checked disabled>
+                            <label for="Service1">Plumbing</label>
+                            <%}else{%>
+                            <input type="checkbox" name="Service1" value="Plumbing" id="Service1" disabled>
+                            <label for="Service1">Plumbing</label>
+                        <%}%>
+                    </div>
+                    <div class="col-sm-5">
+                        <%if(user.Service2=="Garbage Collection"){%>
+                            <input type="checkbox" name="Service2" value="Garbage Collection" id="Service2" checked disabled>
+                            <label for="Service2">Garbage Collection</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service2" value="Garbage Collection" id="Service2" disabled>
+                            <label for="Service2">Garbage Collection</label>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <%if(user.Service3=="Carpentry"){%>
+                            <input type="checkbox" name="Service3" value="Carpentry" id="Service3" checked disabled>
+                            <label for="Service3">Carpentry</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service3" value="Carpentry" id="Service3" disabled>
+                            <label for="Service3">Carpentry</label>
+                        <%}%>
+                    </div>
+                    <div class="col-sm-5">
+                        <%if(user.Service4=="Painting"){%>
+                            <input type="checkbox" name="Service4" value="Painting" id="Service4" checked disabled>
+                            <label for="Service4">Painting</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service4" value="Painting" id="Service4" disabled>
+                            <label for="Service4">Painting</label>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <%if(user.Service5=="Cleaning"){%>
+                            <input type="checkbox" name="Service5" value="Cleaning" id="Service5" checked disabled>
+                            <label for="Service5">Cleaning</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service5" value="Cleaning" id="Service5" disabled>
+                            <label for="Service5">Cleaning</label>
+                        <%}%>
+                    </div>
+                    <div class="col-sm-5">
+                        <%if(user.Service6=="Electrification"){%>
+                            <input type="checkbox" name="Service6" value="Electrification" id="Service6" checked disabled>
+                            <label for="Service6">Electrification</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service6" value="Electrification" id="Service6" disabled>
+                            <label for="Service6">Electrification</label>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <%if(user.Service7=="Hair Cut"){%>
+                            <input type="checkbox" name="Service7" value="Hair Cut" id="Service7" checked disabled>
+                            <label for="Service7">Hair Cut</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service7" value="Hair Cut" id="Service7" disabled>
+                            <label for="Service7">Hair Cut</label>
+                        <%}%>
+                    </div>
+                    <div class="col-sm-5">
+                        <%if(user.Service8=="Pest Control"){%>
+                            <input type="checkbox" name="Service8" value="Pest Control" id="Service8" checked disabled>
+                            <label for="Service8">Pest Control</label>
+                        <%}else{%>
+                            <input type="checkbox" name="Service8" value="Pest Control" id="Service8" disabled>
+                            <label for="Service8">Pest Control</label>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+
+
+            <%if(user.Service1=="Plumbing"){%>
+                <div class="form-group" id="group1" >
+                    <legend for="plumber" class="form-label">Number Of Workers Required For Plumbing</legend>
+                    <input type="number" name="plumber" class="form-control" id="plumber" value="<%=user.plumber%>" disabled>
+                    <div class="col-sm-7">
+                        <legend for="plumberTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="plumberTime" class="form-control" id="plumberTime" value="<%=user.plumberTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+            <%if(user.Service2=="Garbage Collection"){%>
+                <div class="form-group" id="group2" >
+                    <legend for="garbage_collector" class="form-label">Number Of Workers Required For Garbage Collection</legend>
+                    <input type="number" name="garbage_collector" class="form-control"value="<%=user.garbage_collector%>" id="garbage_collector" disabled>
+                    <div class="col-sm-7">
+                        <legend for="garbage_collectorTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="garbage_collectorTime" class="form-control" id="garbage_collectorTime" value="<%=user.garbage_collectorTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+            <%if(user.Service3=="Carpentry"){%>
+                <div class="form-group" id="group3" >
+                    <legend for="carpenter" class="form-label">Number Of Workers Required For Carpentry</legend>
+                    <input type="number" name="carpenter" class="form-control" id="carpenter" value="<%=user.carpenter%>" disabled>
+                    <div class="col-sm-7">
+                        <legend for="carpenterTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="carpenterTime" class="form-control" id="carpenterTime" value="<%=user.carpenterTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+            <%if(user.Service4=="Painting"){%>
+                <div class="form-group" id="group4" >
+                    <legend for="painter" class="form-label">Number Of Workers Required For Painting</legend>
+                    <input type="number" name="painter" class="form-control" id="painter" value="<%=user.painter%>" disabled>
+                    <div class="col-sm-7">
+                        <legend for="painterTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="painterTime" class="form-control" id="painterTime" value="<%=user.painterTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+            <%if(user.Service5=="Cleaning"){%>
+                <div class="form-group" id="group5" >
+                    <legend for="cleaner" class="form-label">Number Of Workers Required For Cleaning</legend>
+                    <input type="number" name="cleaner" class="form-control" id="cleaner" value="<%=user.cleaner%>" disabled>
+                    <div class="col-sm-7">
+                        <legend for="cleanerTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="cleanerTime" class="form-control" id="cleanerTime" value="<%=user.cleanerTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+            <%if(user.Service6=="Electrification"){%>
+                <div class="form-group" id="group6" >
+                    <legend for="electrician" class="form-label">Number Of Workers Required For Electrification</legend>
+                    <input type="number" name="electrician" class="form-control" id="electrician" value="<%=user.electrician%>" disabled>
+                    <div class="col-sm-7">
+                        <legend for="electricianTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="electricianTime" class="form-control" id="electricianTime" value="<%=user.electricianTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+            <%if(user.Service7=="Hair Cut"){%>
+            <div class="form-group" id="group7" >
+                <legend for="barber" class="form-label">Number Of Workers Required For Hair Cut</legend>
+                <input type="number" name="barber" class="form-control" id="barber" value="<%=user.barber%>" disabled>
+                <div class="col-sm-7">
+                    <legend for="barberTime" class="form-label">Number Of Hours Required</legend>
+                    <input type="number" name="barberTime" class="form-control" id="barberTime" value="<%=user.barberTime%>" disabled>
+                </div>
+            </div>
+            <%}%>
+            <%if(user.Service8=="Pest Control"){%>
+                <div class="form-group" id="group8" >
+                    <legend for="pest_controller" class="form-label">Number Of Workers Required For Pest Control</legend>
+                    <input type="number" name="pest_controller" class="form-control" id="pest_controller" value="<%=user.pest_controller%>" disabled>
+                    <div class="col-sm-7">
+                        <legend for="pest_controllerTime" class="form-label">Number Of Hours Required</legend>
+                        <input type="number" name="pest_controllerTime" class="form-control" id="pest_controllerTime" value="<%=iser.pest_controllerTime%>" disabled>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+        <br>
+        <a href="/Client/Logout" class="btn btn-secondary">Logout</a>
+        <a href="/Client_Dashboard/Edit/<%=user.id%>" class="btn btn-primary">Edit</a>
+    </div>
+</div>
+<br>
+<%- include ('./partials/footer.ejs'); -%>

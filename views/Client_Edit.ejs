@@ -1,0 +1,230 @@
+<%- include ('./partials/layout.ejs'); -%>
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <h1 class="text-center mb-3"> 
+                    <i class="fa fa-pencil">Edit Your Details</i>
+                </h1>
+                <%- include ('./partials/messages.ejs'); -%>
+                <form action="/Client_Dashboard/Edit/<%=foundClient._id%>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" id="name" name="user[name]" class="form-control" placeholder="Enter Name"
+                            value="<%= typeof user.name != 'undefined' ? user.name : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="user[email]" class="form-control" placeholder="Enter Email"
+                            value="<%= typeof user.email != 'undefined' ? user.email : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <legend class="form-label">What Are You</legend>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <%if(user.identity=="Individual"){%>
+                                    <input type="radio" name="user[identity]" value="Individual" id="individual" class="form-check-input"
+                                        checked >
+                                    <label for="individual" class="form-check-label">An Individual </label>
+                                    <%}else{%>
+                                    <input type="radio" name="user[identity]" value="Individual" id="individual" class="form-check-input">
+                                    <label for="individual" class="form-check-label">An Individual </label>
+                                    <%}%>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <%if(user.identity=="Community"){%>
+                                    <input type="radio" name="user[identity]" value="Community" id="community" class="form-check-input"
+                                        checked >
+                                    <label for="community" class="form-check-label"> A Community </label>
+                                    <%}else{%>
+                                    <input type="radio" name="user[identity]" value="Community" id="community" class="form-check-input"
+                                        >
+                                    <label for="community" class="form-check-label"> A Community </label>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <legend for="location" class="form-label">Current Location</legend>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for="latitude">Latitude</label>
+                                <input type="text" id="latitude" name="user[latitude]" class="form-control">
+                            </div>
+                            <div class="col-sm-5">
+                                <label for="longitude">Longitude</label>
+                                <input type="text" id="longitude" name="user[longitude]" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <legend for="services" class="form-label">Choose Type Of Service</legend>
+                        <div class="row">
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service1]" value="Plumbing" id="Service1">
+              <label for="Service1">Plumbing</label>
+            </div>
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service2]" value="Garbage Collection" id="Service2">
+              <label for="Service2">Garbage Collection</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service3]" value="Carpentry" id="Service3">
+              <label for="Service3">Carpentry</label>
+            </div>
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service4]" value="Painting" id="Service4">
+              <label for="Service4">Painting</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service5]" value="Cleaning" id="Service5">
+              <label for="Service5">Cleaning</label>
+            </div>
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service6]" value="Electrification" id="Service6">
+              <label for="Service6">Electrification</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service7]" value="Hair Cut" id="Service7">
+              <label for="Service7">Hair Cut</label>
+            </div>
+            <div class="col-sm-5">
+              <input type="checkbox" name="user[Service8]" value="Pest Control" id="Service8">
+            <label for="Service8">Pest Control</label>
+        </div>
+    </div>
+                    
+                    </div>
+                    <div class="form-group" id="group1" style="display: none;">
+                        <legend for="plumber" class="form-label">Number Of Workers Required For Plumbing</legend>
+                        <input type="number" name="user[plumber]" class="form-control" id="plumber" value=0>
+                        <div class="col-sm-7">
+                            <legend for="plumberTime" class="form-label">Number Of Hours Required</legend>
+                            <input type="number" name="user[plumberTime]" class="form-control" id="plumberTime" value=0>
+                        </div>
+                    </div>
+                    <div class="form-group" id="group2" style="display: none;">
+                        <legend for="garbage_collector" class="form-label">Number Of Workers Required For Garbage Collection</legend>
+                        <input type="number" name="user[garbage_collector]" class="form-control" id="garbage_collector" value=0>
+                        <div class="col-sm-7">
+            <legend for="garbage_collectorTime" class="form-label">Number Of Hours Required</legend>
+          <input type="number" name="user[garbage_collectorTime]" class="form-control" id="garbage_collectorTime" value=0>
+          </div>
+                    </div>
+                    <div class="form-group" id="group3" style="display: none;">
+                        <legend for="carpenter" class="form-label">Number Of Workers Required For Carpentry</legend>
+                        <input type="number" name="user[carpenter]" class="form-control" id="carpenter" value=0>
+                        <div class="col-sm-7">
+            <legend for="carpenterTime" class="form-label">Number Of Hours Required</legend>
+          <input type="number" name="user[carpenterTime]" class="form-control" id="carpenterTime" value=0>
+          </div>
+                    </div>
+                    <div class="form-group" id="group4" style="display: none;">
+                        <legend for="painter" class="form-label">Number Of Workers Required For Painting</legend>
+                        <input type="number" name="user[painter]" class="form-control" id="painter" value=0>
+                        <div class="col-sm-7">
+            <legend for="painterTime" class="form-label">Number Of Hours Required</legend>
+          <input type="number" name="user[painterTime]" class="form-control" id="painterTime" value=0>
+          </div>
+                    </div>
+                    <div class="form-group" id="group5" style="display: none;">
+                        <legend for="cleaner" class="form-label">Number Of Workers Required For Cleaning</legend>
+                        <input type="number" name="user[cleaner]" class="form-control" id="cleaner" value=0>
+                        <div class="col-sm-7">
+            <legend for="cleanerTime" class="form-label">Number Of Hours Required</legend>
+          <input type="number" name="user[cleanerTime]" class="form-control" id="cleanerTime" value=0>
+          </div>
+                    </div>
+                    <div class="form-group" id="group6" style="display: none;">
+                        <legend for="electrician" class="form-label">Number Of Workers Required For Electrification</legend>
+                        <input type="number" name="user[electrician]" class="form-control" id="electrician" value=0>
+                        <div class="col-sm-7">
+            <legend for="electricianTime" class="form-label">Number Of Hours Required</legend>
+          <input type="number" name="user[electricianTime]" class="form-control" id="electricianTime" value=0>
+          </div>
+                    </div>
+                    <div class="form-group" id="group7" style="display: none;">
+                        <legend for="barber" class="form-label">Number Of Workers Required For Hair Cut</legend>
+                        <input type="number" name="user[barber]" class="form-control" id="barber" value=0>
+                        <div class="col-sm-7">
+            <legend for="barberTime" class="form-label">Number Of Hours Required</legend>
+          <input type="number" name="user[barberTime]" class="form-control" id="barberTime" value=0>
+          </div>
+                    </div>
+                    <div class="form-group" id="group8" style="display: none;">
+                        <legend for="pest_controller" class="form-label">Number Of Workers Required For Pest Control</legend>
+                        <input type="number" name="user[pest_controller]" class="form-control" id="pest_controller" value=0>
+                        <div class="col-sm-7">
+                            <legend for="pest_controllerTime" class="form-label">Number Of Hours Required</legend>
+                            <input type="number" name="user[pest_controllerTime]" class="form-control" id="pest_controllerTime" value=0>
+                        
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Submit
+                    </button>
+                    <a href="/Client_Dashboard">Go Back!</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var longi = document.getElementById('longitude');
+        var lati = document.getElementById('latitude')
+        navigator.geolocation.getCurrentPosition(function (position) {
+            longi.value = position.coords.longitude.toFixed(5);
+            lati.value = position.coords.latitude.toFixed(5);
+        })
+
+        $(function () {
+            $('#Service1').change(function () {
+                $('#group1').toggle(this.checked);
+            }).change();
+        })
+
+        $(function () {
+            $('#Service2').change(function () {
+                $('#group2').toggle(this.checked);
+            }).change();
+        })
+        $(function () {
+            $('#Service3').change(function () {
+                $('#group3').toggle(this.checked);
+            }).change();
+        })
+        $(function () {
+            $('#Service4').change(function () {
+                $('#group4').toggle(this.checked);
+            }).change();
+        })
+        $(function () {
+    $('#Service5').change(function () {
+      $('#group5').toggle(this.checked);
+    }).change();
+  })
+  $(function () {
+    $('#Service6').change(function () {
+      $('#group6').toggle(this.checked);
+    }).change();
+  })
+  $(function () {
+    $('#Service7').change(function () {
+      $('#group7').toggle(this.checked);
+    }).change();
+  })
+  $(function () {
+    $('#Service8').change(function () {
+      $('#group8').toggle(this.checked);
+    }).change();
+  })
+    </script>
+<%- include ('./partials/footer.ejs'); -%>
