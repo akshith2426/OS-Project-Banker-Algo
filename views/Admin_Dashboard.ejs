@@ -1,4 +1,4 @@
-<%- include ('./partials/header.ejs'); -%>
+<%- include ('./partials/layout.ejs'); -%>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Home</a>
@@ -8,26 +8,31 @@
     <a class="navbar-brand" href="/Client/Login">Client</a>
 </nav>
 <div class="container">
+    <h1>Welcome To Admin Page</h1>
+    <a href="/Admin/new_worker" class="btn btn-danger">Add New Worker</a>
+    <hr>
+        
     <div class="row">
-        <h1>Welcome To Admin Page</h1>
-        <a href="/Admin/new_worker">Add New Worker</a>
         
-        
-        <div class="row ">
+            <div class="col-md-4 col-sm-6">
             <%allworkers.forEach(function(worker,i){%>
-            <div class="card promoting-card" style="border: 5px solid black;">
-                <h3 class="card-title"><%=i+1%>] Name :- <%= worker.worker_name%> </h3>
-                <h4><a href="/Admin/<%=worker.id%>/edit"><i class="far fa-edit"></i></a> 
-                    <form action="/Admin/<%=worker.id%>?_method=DELETE" method="POST"><button><i class="far fa-trash-alt"></i></button>
-                    </form></h4>
-                <h4>Age :- <%= worker.worker_age%></h4>
-                <h4>Gender :- <%= worker.gender%></h4>
-                <h4>Profession :- <%= worker.profession%></h4>
+            <div class="card border-warning mb-3">
+                <div class="card-header"><i class="fa fa-arrow-right" aria-hidden="true"></i> <%= worker.worker_name%> </div>
+                <br>
+                <div style="display: inline-block;">
+                    <a href="/Admin/<%=worker.id%>/edit" class="btn btn-info" style="float: left;margin: 4px;">Edit</a> 
+                    <form action="/Admin/<%=worker.id%>?_method=DELETE" method="POST" style="margin: 4px;"><button class="btn btn-primary">Remove</button>
+                    </form>
+                </div>
+                <h5 class="card-title" style="padding-left: 9px;">Age :- <%= worker.worker_age%></h5>
+                <h5 class="card-title" style="padding-left: 9px;">Gender :- <%= worker.gender%></h5>
+                <h5 class="card-title" style="padding-left: 9px;">Profession :- <%= worker.profession%></h5>
             </div>
             <br>
             <%})%>
         </div>
     </div>
+            
 </div>
 
 
