@@ -18,11 +18,14 @@ h1 {
     color: #EFE7DB;
 }
 
-
+.nav-item{
+    margin-left: 5%;
+}
 .nav-item a {
     font-family: 'Martel Sans', sans-serif;
     color: #EFE7DB;
-    font-weight: 600;
+    font-weight: 900;
+    font-size: larger;
 }
 
 .nav-item a:hover {
@@ -75,4 +78,12 @@ h1 {
         display: none;
     }
 
+}
+#book-now{
+    color: #EFE7DB;
+    font-size: large;
+    font-weight: 900;
+}
+#book-now:hover{
+    text-decoration: none;
 }
