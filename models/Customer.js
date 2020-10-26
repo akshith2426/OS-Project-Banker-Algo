@@ -1,6 +1,7 @@
-const { Decimal128, Double } = require('mongodb');
 var mongoose = require('mongoose');
-
+var t = new Date();
+var mumbai_offset = 5.5 * 60;
+t.setMinutes(t.getMinutes() + mumbai_offset);
 var CustomerSchema = new mongoose.Schema({
 	name: {
 		type: String
@@ -107,7 +108,11 @@ var CustomerSchema = new mongoose.Schema({
 	painter: {
 		type: Number,
 		default:0
-	}
+	},
+	date: {
+        type: Date,
+        default: t
+}
 	// Service: {
 	// 	type:String
 	// }
