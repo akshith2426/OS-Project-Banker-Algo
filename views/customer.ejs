@@ -1,189 +1,206 @@
 <%- include ('./partials/layout.ejs'); -%>
+<style>
+    .form-label
+    {
+    font-weight: bold;
+    }
+</style>
 
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
-        <h1 class="text-center mb-3"> Welcome To Customer Page</h1>
+        <h1 class="text-center mb-3">CUSTOMER PAGE</h1>
+        <br>
         <form method="POST" action="/Customer">
-            <div class="form-group ">
-                <legend for="name" class="form-label"> Name:- </legend>
+            <div class="form-group" >
+                    <label for="name" class="form-label">FULL NAME</label>
                     <input type="text" id="name" name="customer_name" class="form-control" placeholder="Enter Your Name">
             </div>
             <div class="form-group">
-                <legend for="contact_no" class="form-label">Mobile Number:- </legend>
-                <input type="number" id="contact_no" name="contact_no" class="form-control" placeholder="Enter Your Moblie Number">
+                <label for="number" class= "form-label">MOBILE NUMBER</label>
+                <input type="number" id="number" name="contact_no" class="form-control" placeholder="Enter Your Moblie Number">
             </div>
+            
             <div class="form-group">
-                <legend class="form-label">What Are You</legend>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" name="identity" value="Individual" id="individual" class="custom-control-input">
-                            <label for="individual" class="custom-control-label">An Individual </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" name="identity" value="Community" id="community" class="custom-control-input">
-                            <label for="community" class="custom-control-label"> A Community </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <legend for="location" class="form-label">Current Location</legend>
                     <div class="row">
-                        <div class="col-sm-4">
-                            <label for="latitude">Latitude</label>
+                        <div class="col-sm-6" >
+                            <label for="latitude" class="form-label">LATITUDE</label>
                             <input type="text" id="latitude" name="latitude" class="form-control">
                         </div>
-                        <div class="col-sm-4">
-                            <label for="longitude">Longitude</label>
+                        <div class="col-sm-6">
+                            <label for="longitude" class="form-label">LONGITUDE</label>
                             <input type="text" id="longitude" name="longitude" class="form-control">
                         </div>
                     </div>
             </div>
+    
             <div class="form-group">
-                <legend class="form-label">The Location Of Service Required</legend>
-                    <div class="row">
-                        <div class="col-sm-5" >
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="service_location" value="Indoor" id="Indoor" class="custom-control-input">
-                                <label for="Indoor" class="custom-control-label">Indoor </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="service_location" value="Outdoor" id="Outdoor" class="custom-control-input">
-                                <label for="Outdoor" class="custom-control-label">Outdoor </label>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="form-group">
-                <legend class="form-label">What Is The Intended Purpose Of Service</legend>
+                <label class="form-label">AREA OF SERVICE</label>
                 <div class="row">
-                    <div class="col-sm-10">
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="purpose_of_service" id="purpose_of_service1" value="Restore or Repair an existing feature to its working condition" >
-                            <label class="custom-control-label" for="purpose_of_service1">
-                                Restore or Repair an existing feature to its working condition
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service1" id="area_of_service1" value="Carpentry" >
+                            <label class="custom-control-label" for="area_of_service1">
+                                Carpentry
                             </label>
                         </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="purpose_of_service" id="purpose_of_service2" value="Production or Installation of a new feature">
-                            <label class="custom-control-label" for="purpose_of_service2">
-                                Production or Installation of a new feature
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service2" id="area_of_service2" value="Plumbing">
+                            <label class="custom-control-label" for="area_of_service2">
+                                Plumbing
                             </label>
                         </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="purpose_of_service" id="purpose_of_service3" value="Sanitation or Cleaning Facilities">
-                            <label class="custom-control-label" for="purpose_of_service3">
-                                Sanitation or Cleaning Facilities
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service3" id="area_of_service3" value="Electrification">
+                            <label class="custom-control-label" for="area_of_service3">
+                                Electrification
                             </label>
                         </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="purpose_of_service" id="purpose_of_service4" value="Self Care">
-                            <label class="custom-control-label" for="purpose_of_service4">
-                                Self Care
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service4" id="area_of_service4" value="Garbage Collection">
+                            <label class="custom-control-label" for="area_of_service4">
+                                Garbage Collection
                             </label>
                         </div>
                     </div>
-                </div>
-            </div>
-
-
-
-            <div class="form-group" id="group1" style="display: none;">
-                <legend class="form-label">Please choose the options that describe the field of the task/issue</legend>
-                <div class="row">
-                    <div class="col-sm-10">
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="RepairAndRestoration1"
-                                value="Electrical">
-                            <label class="custom-control-label" for="RepairAndRestoration1">
-                                Electrical
-                            </label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="RepairAndRestoration2"
-                                value="Water Based">
-                            <label class="custom-control-label" for="RepairAndRestoration2">
-                                Water Based
-                            </label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="RepairAndRestoration3"
-                                value="Wood Work">
-                            <label class="custom-control-label" for="RepairAndRestoration3">
-                                Wood Work
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="form-group" id="group2" style="display: none;">
-                <legend class="form-label">Please choose the options that describe the field of the task/issue</legend>
-                <div class="row">
-                    <div class="col-sm-10">
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="ProductionOrInstallation1"
-                                value="Electrical">
-                            <label class="custom-control-label" for="ProductionOrInstallation1">
-                                Electrical
-                            </label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="ProductionOrInstallation2"
-                                value="Water Based">
-                            <label class="custom-control-label" for="ProductionOrInstallation2">
-                                Water Based
-                            </label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="ProductionOrInstallation3"
-                                value="Painting">
-                            <label class="custom-control-label" for="ProductionOrInstallation3">
-                                Painting
-                            </label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="ProductionOrInstallation4"
-                                value="Wood Work">
-                            <label class="custom-control-label" for="ProductionOrInstallation4">
-                                Wood Work
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="form-group" id="group3" style="display: none;">
-                <legend class="form-label">Please choose the options that describe the field of the task/issue</legend>
-                <div class="row">
-                    <div class="col-sm-10">
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="SanitationAndCleaning1"
-                                value="Sanitation Service">
-                            <label class="custom-control-label" for="SanitationAndCleaning1">
-                                Sanitation Service
-                            </label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="SanitationAndCleaning2"
-                                value="Pest Control">
-                            <label class="custom-control-label" for="SanitationAndCleaning2">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service5" id="area_of_service5" value="Pest control" >
+                            <label class="custom-control-label" for="area_of_service5">
                                 Pest Control
                             </label>
                         </div>
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service6" id="area_of_service6" value="Salon">
+                            <label class="custom-control-label" for="area_of_service6">
+                                Salon
+                            </label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service7" id="area_of_service7" value="Cleaning">
+                            <label class="custom-control-label" for="area_of_service7">
+                                Cleaning
+                            </label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" name="area_of_service8" id="area_of_service8" value="Painting">
+                            <label class="custom-control-label" for="area_of_service8">
+                                Painting
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="form-group" id="g1" style="display: none;">
+                    <label class="form-label">CARPENTRY SERVICES: <br>
+                        Please choose the option(s) which describes your situation best:</label>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="carpenterTime" id="new_furniture" value=8>
+                                <input type="radio" style="display: none;" name="carpenter" id="carpenter1" value=2>
+                                <label class="custom-control-label" for="new_furniture">
+                                    Make new furniture
+                                </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="carpenterTime" id="install-furniture" value=2>
+                                <input type="radio" style="display: none;" name="carpenter" id="carpenter2" value=1>
+                                <label class="custom-control-label" for="install-furniture">
+                                    Install Furniture 
+                                </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" name="carpenterTime" id="other_woodwork" value=8>
+                                <input type="radio" style="display: none;" name="carpenter" id="carpenter3" value=1>
+                                <label class="custom-control-label" for="other_woodwork">
+                                    Other Woodwork
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="form-group" id="g2" style="display: none;">
+                <label class="form-label">PLUMBING SERVICES: <br>
+                    Please choose the option(s) which describes your situation best:</label>
+                <div class="row">
+                    <div class="col-sm-10">
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service" id="SanitationAndCleaning3"
-                                value="Garbage and Waste Management">
-                            <label class="custom-control-label" for="SanitationAndCleaning3">
-                                Garbage and Waste Management
+                            <input class="custom-control-input" type="radio" name="plumberTime" id="pipe" value=8>
+                            <input type="radio" style="display: none;" name="plumber" id="plumber1" value=1>
+                            <label class="custom-control-label" for="pipe">
+                                Pipe Installation/Repair
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="plumberTime" id="metal-roof" value=16>
+                            <input type="radio" style="display: none;" name="plumber" id="plumber2" value=2>
+                            <label class="custom-control-label" for="metal-roof">
+                                Metal roofing Installation/Repair
+                            </label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="plumberTime" id="drainage" value=8>
+                            <input type="radio" style="display: none;" name="plumber" id="plumber3" value=1>
+                            <label class="custom-control-label" for="drainage">
+                            Drainage
+                            </label>
+                        </div>
+
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="plumberTime" id="replacement" value=1>
+                            <input type="radio" style="display: none;" name="plumber" id="plumber4" value=2>
+                            <label class="custom-control-label" for="replacement">
+                               Defective part replacement
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="plumberTime" id="plumbing-other" value=2>
+                            <input type="radio" style="display: none;" name="plumber" id="plumber5" value=1>
+                            <label class="custom-control-label" for="plumbing-other">
+                            Other(s)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="form-group" id="g3" style="display: none;">
+                <label class="form-label">ELECTRICAL SERVICES:<br>
+                Please choose the option(s) which describes your situation best:</label>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="checkbox" name="electricianTime" id="appliance-repair" value=6>
+                            <label class="custom-control-label" for="appliance-repair" >
+                            <input type="radio" style="display: none;" name="electrician" id="electrician1" value=1>
+                                Appliance Repair
+                            </label>
+        
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="checkbox" name="electricianTime" id="wiring" value=16>
+                            <input type="radio" style="display: none;" name="electrician"  id="electrician2" value=1>
+                            <label class="custom-control-label" for="wiring">
+                                Wiring Installation/Repair
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="electricianTime" id="new-electric-installation" value=1>
+                            <input type="radio" style="display: none;" name="electrician"  id="electrician3" value=1>
+                            <label class="custom-control-label" for="new-electric-installation">
+                               Installation Of New Equipment
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="electricianTime" id="electric-other" value=2>
+                            <input type="radio" style="display: none;" name="electrician" value=1 id="electrician4">
+                            <label class="custom-control-label" for="electric-other">
+                               Other(s)
                             </label>
                         </div>
                     </div>
@@ -191,94 +208,407 @@
             </div>
 
 
-            <div class="form-group" id="group4" style="display: none;">
-                <legend class="form-label">Please choose the options that describe the field of the task/issue</legend>
+            <div class="form-group" id="g4" style="display: none;">
+    <label class="form-label">GARBAGE COLLECTION SERVICES: <br>
+        Please choose the option which describes your situation best:</label>
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="garbage_collectorTime" id="collection" value=0.25>
+                <input type="radio" style="display: none;" name="garbage_collector" value=1 id="collector1">
+                <label class="custom-control-label" for="collection">
+                    Garbage collection
+                </label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="garbage_collectorTime" id="recycle" value=0.25>
+                <input type="radio" style="display: none;" name="garbage_collector" value=1 id="collector2">
+                <label class="custom-control-label" for="recycle">
+                    Recycling
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            <div class="form-group" id="g5" style="display: none;">
+                <label class="form-label">PEST CONTROL SERVICES: <br>
+                Please choose the option(s) which describes your situation best:</label>
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service"
-                                id="SelfCare1" value="Hair Cut">
-                            <label class="custom-control-label" for="SelfCare1">
-                                Hair Cut
+                            <input class="custom-control-input" type="checkbox" name="pestcontrollerTime" id="general-pest-control" value=8>
+                            <input type="radio" style="display: none;" name="pestcontroller" value=2 id="pestcontroller1">
+                            <label class="custom-control-label" for="general-pest-control">
+                                General Pest Control
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service"
-                                id="SelfCare2" value="Hair Coloring">
-                            <label class="custom-control-label" for="SelfCare2">
-                                Hair Coloring
+                            <input class="custom-control-input" type="checkbox" name="pestcontrollerTime" id="termite-control" value=8>
+                            <input type="radio" style="display: none;" name="pestcontroller" value=2 id="pestcontroller2">
+                            <label class="custom-control-label" for="termite-control">
+                                Termite Control
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service"
-                                id="SelfCare3" value="Pedicure">
-                            <label class="custom-control-label" for="SelfCare3">
+                            <input class="custom-control-input" type="radio" name="pestcontrollerTime" id="rodent-control" value=8>
+                            <input type="radio" style="display: none;" name="pestcontroller" value=2 id="pestcontroller3">
+                            <label class="custom-control-label" for="rodent-control">
+                                Rodent Control
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="pestcontrollerTime" id="virus-fumingation" value=8>
+                            <input type="radio" style="display: none;" name="pestcontroller" value=2 id="pestcontroller4">
+                            <label class="custom-control-label" for="virus-fumingation">
+                            Virus Fumingation 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="form-group" id="g6" style="display: none;">
+                <label class="form-label">SALON SERVICES: <br>
+                Please choose the option(s) which describes your situation best:</label>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="checkbox" name="barberTime" id="haircut" value=1>
+                            <input type="radio" style="display: none;" name="barber" id="barber1" value=1>
+                            <label class="custom-control-label" for="haircut">
+                                Haircut
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="checkbox" name="barberTime" id="hair-color" value=1>
+                            <input type="radio" id="barber2" style="display: none;" name="barber" value=1>
+                            <label class="custom-control-label" for="hair-color">
+                                Hair Colour
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="barberTime" id="pedicure" value=0.45>
+                            <input type="radio" style="display: none;" name="barber" value=1 id="barber3">
+                            <label class="custom-control-label" for="pedicure">
                                 Pedicure
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="Service"
-                                id="SelfCare4" value="Manicure">
-                            <label class="custom-control-label" for="SelfCare4">
-                                Manicure
+                            <input class="custom-control-input" type="radio" name="barberTime" id="manicure" value=0.45>
+                            <input type="radio" style="display: none;" name="barber" value=1 id="barber4">
+                            <label class="custom-control-label" for="manicure">
+                               Manicure 
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-                    <button type="submit" class="btn btn-success btn-block">Submit</button>
-                
+
+            
+            <div class="form-group" id="g7" style="display: none;">
+                <label class="form-label">CLEANING SERVICES: <br>
+                    Please choose the option(s) which describes your situation best:</label>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="checkbox" name="cleanerTime" id="disinfection" value=8>
+                            <input type="radio" style="display: none;" name="cleaner" value=2 id="cleaner1">
+                            <label class="custom-control-label" for="disinfection">
+                                Disinfection
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="checkbox" name="cleanerTime" id="full-house-clean" value=8>
+                            <input type="radio" style="display: none;" name="cleaner" value=2 id="cleaner2">
+                            <label class="custom-control-label" for="full-house-clean">
+                                Full-House Cleaning
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="cleanerTime" id="car-wash" value=3>
+                            <input type="radio" style="display: none;" name="cleaner" value=1 id="cleaner3">
+                            <label class="custom-control-label" for="car-wash">
+                               Car Wash
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="cleanerTime" id="replacement" value=1>
+                            <input type="radio" style="display: none;" name="cleaner" value=1 id="cleaner4">
+                            <label class="custom-control-label" for="replacement">
+                               Carpet-Cleaning
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" name="cleanerTime" id="post_event" value=8>
+                            <input type="radio" style="display: none;" name="cleaner" value=10 id="cleaner5">
+                            <label class="custom-control-label" for="post_event">
+                               Post-Event Cleanup
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group" id="g8" style="display: none;">
+    <label class="form-label">PAINTING SERVICES: <br>
+        Please choose your residence type: </label>
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="painterTime" id="1rk" value=8>
+                <input type="radio" style="display: none;" name="painter" value=1  id="painter1">
+                <label class="custom-control-label" for="1rk">
+                    1RK
+                </label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="painterTime" id="1bhk" value=8>
+                <input type="radio" style="display: none;" name="painter" value=2 id="painter2">
+                <label class="custom-control-label" for="1bhk">
+                    1BHK
+                </label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="painterTime" id="2bhk" value=24>
+                <input type="radio" style="display: none;" name="painter" value=2 id="painter3">
+                <label class="custom-control-label" for="2bhk">
+                   2BHK
+                </label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="painterTime" id="3bhk" value=24>
+                <input type="radio" style="display: none;" name="painter" value=3 id="painter4">
+                <label class="custom-control-label" for="3bhk">
+                   3BHK
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+            
+                                
+            
+            <button type="submit" class="btn btn-success btn-block">Submit</button>         
         </form>
     </div>
-        
+
 </div>
 </div>
-<br>
-    <script>
-        var longi=document.getElementById('longitude');
-        var lati=document.getElementById('latitude')
-        navigator.geolocation.getCurrentPosition(function(position){
-            longi.value=position.coords.longitude.toFixed(5);
-            lati.value=position.coords.latitude.toFixed(5);
-        })
-
-        $(function () {
-                $("input[name='purpose_of_service']").click(function () {
-                    if ($("#purpose_of_service1").is(":checked")) {
-                        $("#group1").show();
-                    } else {
-                        $("#group1").hide();
-                    }
+<script>
+                var longi=document.getElementById('longitude');
+                var lati=document.getElementById('latitude')
+                navigator.geolocation.getCurrentPosition(function(position){
+                    longi.value=position.coords.longitude.toFixed(5);
+                    lati.value=position.coords.latitude.toFixed(5);
+                })
+///Carpenter Functions//
+                $(function () {
+    $('#area_of_service1').change(function () {
+      $('#g1').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=carpenterTime]').change(function() {
+if ( $(this).attr('id') == 'new_furniture') {
+ $('#carpenter1').prop('checked', true);
+ }
+});
+    $('input[type=radio][name=carpenterTime]').change(function() {
+if ( $(this).attr('id') == 'install-furniture') {
+ $('#carpenter2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=carpenterTime]').change(function() {
+if ( $(this).attr('id') == 'other_woodwork') {
+ $('#carpenter3').prop('checked', true);
+ }
+});
+//Plumber Functions//
+                $(function () {
+    $('#area_of_service2').change(function () {
+        $('#g2').toggle(this.checked);
+    }).change();
+    })
+                $('input[type=radio][name=plumberTime]').change(function() {
+                    if ( $(this).attr('id') == 'pipe') {
+                        $('#plumber1').prop('checked', true);
+                        }
                 });
-            });
-        $(function () {
-                $("input[name='purpose_of_service']").click(function () {
-                    if ($("#purpose_of_service2").is(":checked")) {
-                        $("#group2").show();
-                    } else {
-                        $("#group2").hide();
-                    }
-                });
-            });
-        $(function () {
-                $("input[name='purpose_of_service']").click(function () {
-                    if ($("#purpose_of_service3").is(":checked")) {
-                        $("#group3").show();
-                    } else {
-                        $("#group3").hide();
-                    }
-                });
-            });
-        $(function () {
-                $("input[name='purpose_of_service']").click(function () {
-                    if ($("#purpose_of_service4").is(":checked")) {
-                        $("#group4").show();
-                    } else {
-                        $("#group4").hide();
-                    }
-                });
-            });
-    </script> 
-
+$('input[type=radio][name=plumberTime]').change(function() {
+if ( $(this).attr('id') == 'metal-roof') {
+ $('#plumber2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=plumberTime]').change(function() {
+if ( $(this).attr('id') == 'drainage') {
+ $('#plumber3').prop('checked', true);
+ }
+});
+$('input[type=radio][name=plumberTime]').change(function() {
+if ( $(this).attr('id') == 'replacement') {
+ $('#plumber4').prop('checked', true);
+ }
+});
+$('input[type=radio][name=plumberTime]').change(function() {
+if ( $(this).attr('id') == 'plumbing-other') {
+ $('#plumber5').prop('checked', true);
+ }
+});
+//electrician functions
+                $(function () {
+    $('#area_of_service3').change(function () {
+      $('#g3').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=electricianTime]').change(function() {
+if ( $(this).attr('id') == 'appliance-repair') {
+ $('#electrician1').prop('checked', true);
+ }
+});
+$('input[type=radio][name=electricianTime]').change(function() {
+if ( $(this).attr('id') == 'wiring') {
+ $('#electrician2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=electricianTime]').change(function() {
+if ( $(this).attr('id') == 'new-electric-installation') {
+ $('#electrician3').prop('checked', true);
+ }
+});
+$('input[type=radio][name=electricianTime]').change(function() {
+if ( $(this).attr('id') == 'electric-other') {
+ $('#electrician4').prop('checked', true);
+ }
+});
+//garbage collection functions
+                $(function () {
+    $('#area_of_service4').change(function () {
+      $('#g4').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=garbage_collectorTime]').change(function() {
+if ( $(this).attr('id') == 'collection') {
+ $('#collector1').prop('checked', true);
+ }
+});
+$('input[type=radio][name=garbage_collectorTime]').change(function() {
+if ( $(this).attr('id') == 'recycle') {
+ $('#collector2').prop('checked', true);
+ }
+});
+//pest control functions
+               $(function () {
+    $('#area_of_service5').change(function () {
+      $('#g5').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=pestcontrollerTime]').change(function() {
+if ( $(this).attr('id') == 'general-pest-control') {
+ $('#pestcontroller1').prop('checked', true);
+ }
+});
+$('input[type=radio][name=pestcontrollerTime]').change(function() {
+if ( $(this).attr('id') == 'termite-control') {
+ $('#pestcontroller2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=pestcontrollerTime]').change(function() {
+if ( $(this).attr('id') == 'rodent-control') {
+ $('#pestcontroller3').prop('checked', true);
+ }
+});
+$('input[type=radio][name=pestcontrollerTime]').change(function() {
+if ( $(this).attr('id') == 'virus-fumingation') {
+ $('#pestcontroller4').prop('checked', true);
+ }
+});
+//Salon function services
+                $(function () {
+    $('#area_of_service6').change(function () {
+      $('#g6').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=barberTime]').change(function() {
+if ( $(this).attr('id') == 'haircut') {
+ $('#barber1').prop('checked', true);
+ }
+});
+$('input[type=radio][name=barberTime]').change(function() {
+if ( $(this).attr('id') == 'hair-color') {
+ $('#barber2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=barberTime]').change(function() {
+if ( $(this).attr('id') == 'pedicure') {
+ $('#barber3').prop('checked', true);
+ }
+});
+$('input[type=radio][name=barberTime]').change(function() {
+if ( $(this).attr('id') == 'manicure') {
+ $('#barber4').prop('checked', true);
+ }
+});
+//cleaning functions
+  $(function () {
+    $('#area_of_service7').change(function () {
+      $('#g7').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=cleanerTime]').change(function() {
+if ( $(this).attr('id') == 'disinfection') {
+ $('#cleaner1').prop('checked', true);
+ }
+});
+$('input[type=radio][name=cleanerTime]').change(function() {
+if ( $(this).attr('id') == 'full-house-clean') {
+ $('#cleaner2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=cleanerTime]').change(function() {
+if ( $(this).attr('id') == 'car-wash') {
+ $('#cleaner3').prop('checked', true);
+ }
+});
+$('input[type=radio][name=cleanerTime]').change(function() {
+if ( $(this).attr('id') == 'replacement') {
+ $('#cleaner4').prop('checked', true);
+ }
+});
+$('input[type=radio][name=cleanerTime]').change(function() {
+if ( $(this).attr('id') == 'post_event') {
+ $('#cleaner5').prop('checked', true);
+ }
+});
+//painter services
+  $(function () {
+    $('#area_of_service8').change(function () {
+      $('#g8').toggle(this.checked);
+    }).change();
+  })
+  $('input[type=radio][name=painterTime]').change(function() {
+if ( $(this).attr('id') == '1rk') {
+ $('#painter1').prop('checked', true);
+ }
+});
+$('input[type=radio][name=painterTime]').change(function() {
+if ( $(this).attr('id') == '1bhk') {
+ $('#painter2').prop('checked', true);
+ }
+});
+$('input[type=radio][name=painterTime]').change(function() {
+if ( $(this).attr('id') == '2bhk') {
+ $('#painter3').prop('checked', true);
+ }
+});
+$('input[type=radio][name=painterTime]').change(function() {
+if ( $(this).attr('id') == '3bhk') {
+ $('#painter4').prop('checked', true);
+ }
+});
+            </script> 
 
 <%- include ('./partials/footer.ejs'); -%>
