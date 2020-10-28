@@ -1,5 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const twilio = require('twilio');
+var nodemailer = require('nodemailer');
+
+require('dotenv').config();
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
+  }
+});
+
+var message_sender = new twilio(process.env.KEY_1,process.env.KEY_2);
 
 //Customer Model
 const Customer = require('../models/Customer');
@@ -9,6 +22,7 @@ router.get('/Customer', (req, resp) => {
 });
 router.post('/Customer', function(req, resp) {
 	var name = req.body.customer_name;
+	var email = req.body.customer_email;
 	var contact_no = req.body.contact_no;
 	var identity = req.body.identity;
 	var longitude = req.body.longitude;
@@ -44,8 +58,18 @@ router.post('/Customer', function(req, resp) {
 	// var SanitationAndCleaning = req.body.SanitationAndCleaning;
 	// var SelfCare = req.body.SelfCare;
 	// RepairAndRestoration, ProductionOrInstallation: ProductionOrInstallation, SanitationAndCleaning: SanitationAndCleaning, SelfCare: SelfCare,Service:Service,service_location: service_location,
+
+
+	var obj_array=[req.body.area_of_service1,req.body.area_of_service2,
+		req.body.area_of_service3,req.body.area_of_service4,
+		req.body.area_of_service5,req.body.area_of_service6,
+		req.body.area_of_service7, req.body.area_of_service8]
+	
+	
+	
 	var newCustomer = {
 		name: name,
+		email:email,
 		contact_no: contact_no,
 		identity: identity,
 		longitude: longitude,
@@ -75,11 +99,45 @@ router.post('/Customer', function(req, resp) {
 		painterTime: painterTime,
 		painter:painter
 	};
+	var i=0;
+	var work = 'You Have Requested Services For :-';
+	for (i = 0; i < 8; i++)
+	{
+	if (obj_array[i] != null) {
+		work=work+'\n'+obj_array[i];
+		i = i + 1;
+	}}
 	Customer.create(newCustomer, function(err, newlyCreated) {
 		if (err) {
 			console.log(err);
 			resp.redirect('/Customer');
 		} else {
+			message_sender.messages.create({
+            to: contact_no,
+				from: '+19152282797',
+		body:'Welcome '+name+'\nThank you for registering as a customer at rural housie\n'+work
+			})
+			var mailOptions = {
+                                from: 'rakeshparag876@gmail.com',
+                                to: email,
+                                subject: 'Successful Registration Of Customer',
+				html: `<h2>Welcome ${name}</h2>
+						<h4>You have successfully registered as a Customer at Rural Housie.</h4>
+						<h4>You will be recieving requested workers as requested</h4>
+						<h3>${work}</h3>
+						<p style="font-size: medium;font-weight: bolder;">For More Queries,
+                    Please contact through our mail address <a href="mailto:rakeshparag876@gmail.com" style="text-decoration: none;">Rural Housie</a> and our social media handles</p>`
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                            console.log(error);
+                    } else {
+                            console.log('Email sent: ' + info.response);
+                    }
+             });
+			
+			
 			resp.redirect('/');
 		}
 	});

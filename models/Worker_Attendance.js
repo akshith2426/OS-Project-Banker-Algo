@@ -6,6 +6,9 @@ var Worker_Attendance_Schema = new mongoose.Schema({
 	name: {
 		type: String
 	},
+	contact_no: {
+		type:String
+	},
 	resource: {
 		type: String
 	},

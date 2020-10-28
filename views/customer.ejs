@@ -14,11 +14,15 @@
         <form method="POST" action="/Customer">
             <div class="form-group" >
                     <label for="name" class="form-label">FULL NAME</label>
-                    <input type="text" id="name" name="customer_name" class="form-control" placeholder="Enter Your Name">
+                    <input type="text" id="name" name="customer_name" class="form-control" placeholder="Enter Your Name" required>
+            </div>
+            <div class="form-group" >
+                    <label for="customer_email" class="form-label">Email</label>
+                    <input type="email" id="customer_email" name="customer_email" class="form-control" placeholder="Enter Your Email Id" required>
             </div>
             <div class="form-group">
                 <label for="number" class= "form-label">MOBILE NUMBER</label>
-                <input type="number" id="number" name="contact_no" class="form-control" placeholder="Enter Your Moblie Number">
+                <input type="text" id="number" name="contact_no" class="form-control" placeholder="Enter Your Moblie Number With Country Code (+918919810326)" required>
             </div>
             
             <div class="form-group">
@@ -175,7 +179,7 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="electricianTime" id="appliance-repair" value=6>
+                            <input class="custom-control-input" type="radio" name="electricianTime" id="appliance-repair" value=6>
                             <label class="custom-control-label" for="appliance-repair" >
                             <input type="radio" style="display: none;" name="electrician" id="electrician1" value=1>
                                 Appliance Repair
@@ -183,7 +187,7 @@
         
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="electricianTime" id="wiring" value=16>
+                            <input class="custom-control-input" type="radio" name="electricianTime" id="wiring" value=16>
                             <input type="radio" style="display: none;" name="electrician"  id="electrician2" value=1>
                             <label class="custom-control-label" for="wiring">
                                 Wiring Installation/Repair
@@ -237,14 +241,14 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="pestcontrollerTime" id="general-pest-control" value=8>
+                            <input class="custom-control-input" type="radio" name="pestcontrollerTime" id="general-pest-control" value=8>
                             <input type="radio" style="display: none;" name="pestcontroller" value=2 id="pestcontroller1">
                             <label class="custom-control-label" for="general-pest-control">
                                 General Pest Control
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="pestcontrollerTime" id="termite-control" value=8>
+                            <input class="custom-control-input" type="radio" name="pestcontrollerTime" id="termite-control" value=8>
                             <input type="radio" style="display: none;" name="pestcontroller" value=2 id="pestcontroller2">
                             <label class="custom-control-label" for="termite-control">
                                 Termite Control
@@ -275,14 +279,14 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="barberTime" id="haircut" value=1>
+                            <input class="custom-control-input" type="radio" name="barberTime" id="haircut" value=1>
                             <input type="radio" style="display: none;" name="barber" id="barber1" value=1>
                             <label class="custom-control-label" for="haircut">
                                 Haircut
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="barberTime" id="hair-color" value=1>
+                            <input class="custom-control-input" type="radio" name="barberTime" id="hair-color" value=1>
                             <input type="radio" id="barber2" style="display: none;" name="barber" value=1>
                             <label class="custom-control-label" for="hair-color">
                                 Hair Colour
@@ -313,14 +317,14 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="cleanerTime" id="disinfection" value=8>
+                            <input class="custom-control-input" type="radio" name="cleanerTime" id="disinfection" value=8>
                             <input type="radio" style="display: none;" name="cleaner" value=2 id="cleaner1">
                             <label class="custom-control-label" for="disinfection">
                                 Disinfection
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="checkbox" name="cleanerTime" id="full-house-clean" value=8>
+                            <input class="custom-control-input" type="radio" name="cleanerTime" id="full-house-clean" value=8>
                             <input type="radio" style="display: none;" name="cleaner" value=2 id="cleaner2">
                             <label class="custom-control-label" for="full-house-clean">
                                 Full-House Cleaning
@@ -334,9 +338,9 @@
                             </label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" type="radio" name="cleanerTime" id="replacement" value=1>
+                            <input class="custom-control-input" type="radio" name="cleanerTime" id="carpet-cleaning" value=1>
                             <input type="radio" style="display: none;" name="cleaner" value=1 id="cleaner4">
-                            <label class="custom-control-label" for="replacement">
+                            <label class="custom-control-label" for="carpet-cleaning">
                                Carpet-Cleaning
                             </label>
                         </div>
@@ -509,8 +513,9 @@ if ( $(this).attr('id') == 'recycle') {
   $('input[type=radio][name=pestcontrollerTime]').change(function() {
 if ( $(this).attr('id') == 'general-pest-control') {
  $('#pestcontroller1').prop('checked', true);
+
  }
-});
+  });
 $('input[type=radio][name=pestcontrollerTime]').change(function() {
 if ( $(this).attr('id') == 'termite-control') {
  $('#pestcontroller2').prop('checked', true);
@@ -574,7 +579,7 @@ if ( $(this).attr('id') == 'car-wash') {
  }
 });
 $('input[type=radio][name=cleanerTime]').change(function() {
-if ( $(this).attr('id') == 'replacement') {
+if ( $(this).attr('id') == 'carpet-cleaning') {
  $('#cleaner4').prop('checked', true);
  }
 });

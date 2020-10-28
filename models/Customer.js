@@ -6,8 +6,11 @@ var CustomerSchema = new mongoose.Schema({
 	name: {
 		type: String
 	},
+	email: {
+		type:String
+	},
 	contact_no: {
-		type:Number
+		type:String
 	},
 	identity: {
 		type: String

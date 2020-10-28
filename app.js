@@ -6,6 +6,8 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+require('dotenv').config();
+
 
 // Passport Config
 require('./config/passport1')(passport);
@@ -14,7 +16,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
-mongoose.connect('mongodb+srv://akshith123:akshith123@cluster0.d6v8q.mongodb.net/banker_algo_test1', {
+mongoose.connect(process.env.MONGO_URL, {
 	useFindAndModify: false,
 	useNewUrlParser: true,
 	useUnifiedTopology: true
